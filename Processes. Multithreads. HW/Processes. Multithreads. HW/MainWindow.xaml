@@ -1,0 +1,42 @@
+﻿<Window x:Class="Processes.Multithreads.HW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Processes.Multithreads.HW"
+        mc:Ignorable="d"
+        Title="Crypter" Height="250" Width="600"
+        KeyDown="Window_KeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="15, 15, 30, 15" Content="Файл..." BorderThickness="0" FontWeight="Bold" x:Name="FileSelect" Click="FileSelect_Click"/>
+        <TextBox Grid.Column="1" Margin="10, 15, 10, 15" Grid.ColumnSpan="3" x:Name="Path" TextChanged="Path_TextChanged"/>
+        <Label Grid.Row="1" Content="Пароль (only numbers) : " VerticalContentAlignment="Center" Margin="15, 0, 0, 0" FontWeight="Bold"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="10, 15, 10, 15" Name="Passwd" TextChanged="Passwd_TextChanged"/>
+        <CheckBox Grid.Row="1" Grid.Column="2" Content="Зашифровати" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="IsEncrypt" Checked="IsEncrypt_Checked"/>
+        <CheckBox Grid.Row="1" Grid.Column="3" Content="Розшифрувати" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="IsDecrypt" Checked="IsDecrypt_Checked"/>
+        <ProgressBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="15, 15, 10, 15" x:Name="Progress"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnStart" Content="Пуск" FontWeight="Bold" BorderThickness="0" FontSize="15" Grid.Column="3" Margin="15, 15, 15, 15" Click="btnStart_Click"/>
+            <Button x:Name="btnCancel" Content="Відміна" FontWeight="Bold" BorderThickness="0" FontSize="15" Grid.Column="4" Margin="15, 15, 15, 15" Click="btnCancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>
