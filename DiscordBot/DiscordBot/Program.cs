@@ -13,7 +13,7 @@ namespace DiscordBot
             client = new DiscordSocketClient();
             client.MessageReceived += Client_MessageReceived;
 
-            string token = "OTYyMDU1Mzk2Mjc1NjU0NzE2.YlB96A.DDJP4hRUgrwfOFMvqSVyKN0jzCY";
+            string token = "";
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
 
