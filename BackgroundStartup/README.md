@@ -1,0 +1,1 @@
+It's a video playing on startup Windows, place the video in a folder and build it, next you need to put .exe file in Windows startup folder.
